@@ -1,8 +1,11 @@
 <h1>Result</h1>
 
-<p>Sorry but <strong><%= @guess.upcase %></strong> can't be built out of:  <%= @letters %></p>
+<% if !@valid_with_grid %>
+  <p>Sorry but <strong><%= @guess.upcase %></strong> can't be built out of:  <%= @letters %></p>
+<% elsif !@valid_english %>
+  <p>Sorry but <strong><%= @guess.upcase %></strong> does not seem to be a valid English word...</p>
+<% else %>
+  <p><strong>Congrats!</strong> <strong><%= @guess.upcase %></strong> is a valid English word!</p>
+<% end %>
 
-<p>Sorry but <strong><%= @guess.upcase %></strong> does not seem to be a valid English word...</p>
-
-<p><strong>Congrats!</strong> <strong><%= @guess.upcase %></strong> is a valid English word!</p>
-
+<%= link_to "Play Again", new_path %>
